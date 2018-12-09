@@ -1,3 +1,4 @@
+require "pry"
 class String # Stringクラスを拡張
   H1 = /\#{1}\ /
   H2 = /\#{2}\ /
@@ -15,11 +16,45 @@ class String # Stringクラスを拡張
   LINK = /\[.+\]\(.+\)/
 
   def replace_headers
-    rep_h1.rep_h2.rep_h3.rep_h4.rep_h5.rep_h6
+    [H6, H5, H4, H3, H2, H1].each do |header|
+      next self unless header.match(self)
+      replacer  = if header == H6
+                    "[* "
+                  elsif header == H5
+                    "[** "
+                  elsif header == H4
+                    "[*** "
+                  elsif header == H3
+                    "[**** "
+                  elsif header == H2
+                    "[***** "
+                  elsif header == H1
+                    "[****** "
+                  end
+      return self.gsub!(header, replacer) + "]"
+    end
+    return self
   end
 
   def replace_indents
-    rep_i6.rep_i5.rep_i4.rep_i3.rep_i2.rep_i1
+    [I6, I5, I4, I3, I2, I1].each do |indent|
+      next self unless indent.match(self)
+      replacer  = if indent == I6
+                    "      "
+                  elsif indent == I5
+                    "     "
+                  elsif  indent == I4
+                    "    "
+                  elsif indent == I3
+                    "   "
+                  elsif indent == I2
+                    "  "
+                  elsif indent == I1
+                    " "
+                  end
+      return self.gsub!(indent, replacer)
+    end
+    return self
   end
 
   def replace_bolds
@@ -30,56 +65,6 @@ class String # Stringクラスを拡張
   def replace_links
     return self unless LINK.match(self)
     gsub!(/\]\(|\)/, "](" => " ", ")" => "]")
-  end
-
-  def rep_h1
-    return self unless H1.match(self)
-    gsub!(H1, "[****** ") + "]"
-  end
-  def rep_h2
-    return self unless H2.match(self)
-    gsub!(H2, "[***** ") + "]"
-  end
-  def rep_h3
-    return self unless H3.match(self)
-    gsub!(H3, "[**** ") + "]"
-  end
-  def rep_h4
-    return self unless H4.match(self)
-    gsub!(H4, "[*** ") + "]"
-  end
-  def rep_h5
-    return self unless H5.match(self)
-    gsub!(H5, "[** ") + "]"
-  end
-  def rep_h6
-    return self unless H6.match(self)
-    gsub!(H6, "[* ") + "]"
-  end
-
-  def rep_i1
-    return self unless I1.match(self)
-    gsub!(I1, " ")
-  end
-  def rep_i2
-    return self unless I2.match(self)
-    gsub!(I2, "  ")
-  end
-  def rep_i3
-    return self unless I3.match(self)
-    gsub!(I3, "   ")
-  end
-  def rep_i4
-    return self unless I4.match(self)
-    gsub!(I4, "    ")
-  end
-  def rep_i5
-    return self unless I5.match(self)
-    gsub!(I5, "     ")
-  end
-  def rep_i6
-    return self unless I6.match(self)
-    gsub!(I6, "      ")
   end
 end
 
