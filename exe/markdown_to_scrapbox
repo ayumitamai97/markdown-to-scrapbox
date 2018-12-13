@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "markdown_to_scrapbox/cli"
+
+params = ARGV.getopts('i:o:t:c:', 'input:', 'output:', 'type-of-indent:space', 'count-of-indent:2')
+
+MarkdownToScrapbox::CLI.new.convert(params)
