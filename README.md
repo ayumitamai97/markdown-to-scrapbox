@@ -19,16 +19,16 @@ Or install it yourself as:
 ## Usage
 
 ```bash
-$ ruby ./path/to/scrap.rb --input TARGET_MARKDOWN_FILE.md --output OUTPUT_FILE.txt
+$ bundle exec markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt
 ```
 
 ## Options
 
-### `-i`, `--input` [required]
+### `-i`, `-i` [required]
 
 Indicate the target markdown file.
 
-### `-o`, `--output` [required]
+### `-o`, `-o` [required]
 
 Indicate the output file name.
 
@@ -38,7 +38,7 @@ Indicate indent type from `space` and `tab`.
 Default indent type is `space`.
 
 ```bash
-$ ruby ./path/to/scrap.rb --input TARGET_MARKDOWN_FILE.md --output OUTPUT_FILE.txt -t tab
+$ bundle exec markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt -t tab
 ```
 
 ### `-c`, `--count-of-indent` [optional]
@@ -47,7 +47,7 @@ Indicate the number of indent from `2` and `4`.
 Default indent count is `2`.
 
 ```bash
-$ ruby ./path/to/scrap.rb --input TARGET_MARKDOWN_FILE.md --output OUTPUT_FILE.txt -c 2
+$ bundle exec markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt -c 2
 ```
 
 ## Any questions?
