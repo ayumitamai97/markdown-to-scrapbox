@@ -24,11 +24,11 @@ $ bundle exec markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt
 
 ## Options
 
-### `-i`, `-i` [required]
+### `-i`, `--input` [required]
 
 Indicate the target markdown file.
 
-### `-o`, `-o` [required]
+### `-o`, `--output` [required]
 
 Indicate the output file name.
 
