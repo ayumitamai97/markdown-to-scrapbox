@@ -10,7 +10,7 @@ module MarkdownToScrapbox
       "provide input file, output file, indent type and the number of indent with options"
     def convert(params)
       parse_params(params)
-      validate_params(@input_file_name, @output_file_name, @indent_type, @indent_count)
+      validate_params(@output_file_name, @indent_type, @indent_count)
 
       lines = ""
       File.open("./" + @input_file_name) do |f|
@@ -32,6 +32,7 @@ module MarkdownToScrapbox
     private
     def parse_params(params)
       @input_file_name = params["i"] || params["input"]
+      validate_input_file_name(@input_file_name)
       input_file_name_without_ext = @input_file_name.delete(".md")
       @output_file_name = params["o"] || params["output"] ||
                           "scrapbox_" + input_file_name_without_ext + ".txt"
@@ -39,11 +40,14 @@ module MarkdownToScrapbox
       @indent_count = (params["c"] || params["count-of-indent"] || "2").to_i
     end
 
-    def validate_params(input_file_name, output_file_name, indent_type, indent_count)
-      unless input_file_name.match(/.+\.md/)
+    def validate_input_file_name(input_file_name)
+      if input_file_name.nil? || !input_file_name.match(/.+\.md/)
         error "Input file name should be markdown file (*.md) ."
         exit 
       end
+    end
+
+    def validate_params(output_file_name, indent_type, indent_count)
       unless output_file_name.match(/.+\.txt/)
         warn "Warning: In order not to auto-format output file when you open it,"
         warn "it is recommended that you specify output file as text file (*.txt) ."
