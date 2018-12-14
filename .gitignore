@@ -1,6 +1,7 @@
 .bundle/
 *.md
 *.txt
+Gemfile.lock
 !README.md
 !CHANGELOG.md
 !LICENCE.txt
