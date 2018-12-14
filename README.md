@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 
 ```bash
-$ bundle exec markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt
+$ bundle exec bin/markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt
 ```
 
 ## Options
@@ -38,7 +38,7 @@ Indicate indent type from `space` and `tab`.
 Default indent type is `space`.
 
 ```bash
-$ bundle exec markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt -t tab
+$ bundle exec bin/markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt -t tab
 ```
 
 ### `-c`, `--count-of-indent` [optional]
@@ -47,7 +47,7 @@ Indicate the number of indent from `2` and `4`.
 Default indent count is `2`.
 
 ```bash
-$ bundle exec markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt -c 2
+$ bundle exec bin/markdown_to_scrapbox -i TARGET_MARKDOWN_FILE.md -o OUTPUT_FILE.txt -c 2
 ```
 
 ## Any questions?
