@@ -1,1 +1,6 @@
 .bundle/
+*.md
+*.txt
+!README.md
+!CHANGELOG.md
+!LICENCE.txt
